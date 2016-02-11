@@ -87,9 +87,16 @@ myRawData$weekday &lt;- weekdays(myRawData$calDate)</code></pre>
 <div id="what-is-the-mean-total-number-of-steps-taken-per-day" class="section level2">
 <h2>What is the mean total number of steps taken per day?</h2>
 <p>While there are some NA values in the steps field, we ignore those for initial analysis. Using the dplyr package, the number of steps on each calendar date are summed, then a histogram is created.</p>
-<pre class="r"><code>library(dplyr)
-
-myDailySum &lt;- myRawData %&gt;%
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>myDailySum &lt;- myRawData %&gt;%
               group_by(calDate) %&gt;%
               summarize(dailySteps = sum(steps,na.rm=TRUE))
 
