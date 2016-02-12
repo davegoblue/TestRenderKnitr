@@ -42,6 +42,9 @@ myDailySum <- myRawData %>%
 hist(myDailySum$dailySteps, breaks=10, col="green", 
      main="Histogram for Steps per Day: Oct-Nov 2012", xlab="Daily Steps", ylab="# Days"
      )
+text(x=5000,y=15,"Eight days with intervals")
+text(x=5000,y=14,"all NA each treated as")
+text(x=5000,y=13,"steps=0 for this plot")
 ```
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
@@ -66,7 +69,9 @@ print(paste0("Median steps per day is: ",round(dailyMedian,0)))
 ```
 ## [1] "Median steps per day is: 10395"
 ```
-
+  
+*Note that 8 days with only NA are treated as 0 steps for this mean and median*
+  
  na.rm=TRUE | Mean   | Median
 ------------|--------|--------
 Daily Steps | 9,354  | 10,395
@@ -160,6 +165,10 @@ hist(myDailyImputedSum$dailySteps, breaks=10, col="orange",
      main="Histogram for Steps per Day: Oct-Nov 2012", 
      xlab="Daily Steps (missing values imputed)", ylab="# Days"
      )
+
+text(x=5000,y=20,"Eight days with intervals")
+text(x=5000,y=18.5,"all NA each imputed to")
+text(x=5000,y=17,"steps=mean for this plot")
 ```
 
 ![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
@@ -184,7 +193,9 @@ print(paste0("Median steps per day after imputing is: ",round(dailyImputedMedian
 ```
 ## [1] "Median steps per day after imputing is: 10762"
 ```
-
+  
+*Significant change in mean is due to imputing an average for the eight NA days rather than assuming zero*
+  
 Post-Impute | Mean   | Median
 ------------|--------|--------
 Daily Steps | 10,766 | 10,762
